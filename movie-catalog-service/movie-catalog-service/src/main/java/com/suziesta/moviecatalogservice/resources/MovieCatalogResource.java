@@ -27,7 +27,7 @@ public class MovieCatalogResource {
     public List<CatalogItem> getCatalogue(@PathVariable("userId") String userId){
 
         //get all rated movie id
-        UserRating ratings = restTemplate.getForObject("http://localhost:8083/ratingsdata/users/"+userId,UserRating.class);
+        UserRating ratings = restTemplate.getForObject("http://rating-data-service/ratingsdata/users/"+userId,UserRating.class);
 
 
         return ratings.getUserRating().stream()
@@ -36,7 +36,7 @@ public class MovieCatalogResource {
                     //get instance of restTemplate and call method getForObject
                     //1st parameter-url you want to call,it gets back string
                     //2nd - unload it in class with same template as json
-                    Movie movie = restTemplate.getForObject("http://localhost:8082/movies/"+rating.getMovieId(),Movie.class);
+                    Movie movie = restTemplate.getForObject("http://movie-info-service/movies/"+rating.getMovieId(),Movie.class);
 
 //                    Movie movie = webClientBuilder.build()
 //                            .get()
