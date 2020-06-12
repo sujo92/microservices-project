@@ -27,7 +27,7 @@ public class MovieCatalogResource {
     public List<CatalogItem> getCatalogue(@PathVariable("userId") String userId){
 
         //get all rated movie id
-        UserRating ratings = restTemplate.getForObject("http://rating-data-service/ratingsdata/users/"+userId,UserRating.class);
+        UserRating ratings = restTemplate.getForObject("http://RATING-DATA-SERVICE/ratingsdata/users/"+userId,UserRating.class);
 
 
         return ratings.getUserRating().stream()
